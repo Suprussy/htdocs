@@ -27,7 +27,7 @@ function print_list()
   $i = 0;
   while ($i < count($list)) {
     if ($list[$i] != '.' && $list[$i] != '..') {
-      echo "<li><a href=\"index.php?id=$list[$i]\">$list[$i]</li>\n";
+      echo "<li><a href=\"index.php?id=$list[$i]\">$list[$i]</a></li>\n";
     }
     $i = $i + 1;
   }
