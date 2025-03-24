@@ -51,7 +51,7 @@ function print_list()
     <?php print_list() ?>
   </ol>
   <a href="create.php">create</a>
-  <form action="create_process.php" method="$_POST">
+  <form action="create_process.php" method="post">
     <p>
       <input type="text" name="title" placeholder="Title" />
     </p>
