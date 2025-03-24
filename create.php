@@ -51,6 +51,17 @@ function print_list()
     <?php print_list() ?>
   </ol>
   <a href="create.php">create</a>
+  <form action="create_process.php" method="$_POST">
+    <p>
+      <input type="text" name="title" placeholder="Title" />
+    </p>
+    <p>
+      <textarea name="description" id="" placeholder="Description"></textarea>
+    </p>
+    <p>
+      <input type="submit" value="Submit" />
+    </p>
+  </form>
   <h2><?php print_title() ?></h2>
   <?php print_description() ?>
 </body>
