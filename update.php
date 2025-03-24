@@ -60,10 +60,10 @@ function print_list()
       <input type="text" name="title" placeholder="Title" value="<?php print_title() ?>" />
     </p>
     <p>
-      <textarea name="description" id="" placeholder="Description" value="<?php print_description() ?>"></textarea>
+      <textarea name="description" id="" placeholder="Description"><?php print_description() ?></textarea>
     </p>
     <p>
-      <input type=" submit" value="Submit" />
+      <input type="submit" value="Submit" />
     </p>
   </form>
 </body>
