@@ -15,9 +15,21 @@
     <li><a href="index.php?id=JavaScript">JavaScript</a></li>
   </ol>
   <h2>
-    <?= $_GET['id'] ?>
+    <?php
+    if (isset($_GET['id'])) {
+      echo $_GET['id'];
+    } else {
+      echo "Welcome";
+    }
+    ?>
   </h2>
-  <?= file_get_contents("data/" . $_GET['id']) ?>
+  <?php
+  if (isset($_GET['id'])) {
+    echo file_get_contents("data/" . $_GET['id']);
+  } else {
+    echo "Hello, PHP";
+  }
+  ?>
 </body>
 
 </html>
