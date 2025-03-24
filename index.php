@@ -14,7 +14,9 @@
     $list = scandir('./data');
     $i = 0;
     while ($i < count($list)) {
-      echo "<li><a href=\"index.php?id=$list[$i]\">$list[$i]</li>\n";
+      if ($list[$i] != '.' && $list[$i] != '..') {
+        echo "<li><a href=\"index.php?id=$list[$i]\">$list[$i]</li>\n";
+      }
       $i = $i + 1;
     }
     ?>
