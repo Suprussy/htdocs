@@ -1,3 +1,14 @@
+<?php
+function print_title()
+{
+  if (isset($_GET['id'])) {
+    echo $_GET['id'];
+  } else {
+    echo "Welcome";
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +19,9 @@
 </head>
 
 <body>
-  <h1>WEB</h1>
+  <h1>
+    <?php print_title() ?>
+  </h1>
   <ol>
     <?php
     $list = scandir('./data');
@@ -21,15 +34,7 @@
     }
     ?>
   </ol>
-  <h2>
-    <?php
-    if (isset($_GET['id'])) {
-      echo $_GET['id'];
-    } else {
-      echo "Welcome";
-    }
-    ?>
-  </h2>
+  <h2><?php print_title() ?></h2>
   <?php
   if (isset($_GET['id'])) {
     echo file_get_contents("data/" . $_GET['id']);
