@@ -12,6 +12,7 @@
   <ol>
     <li>HTML</li>
   </ol>
+  <a href="create.php">create</a>
   <h2>Welcome</h2>
   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure libero omnis incidunt sapiente rerum exercitationem in, autem minus reiciendis? Dolorum ex exercitationem vitae qui est beatae rem. Dolores, amet corporis.
 </body>
