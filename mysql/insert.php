@@ -1,19 +1,21 @@
 <?php
-$user = "root";
-$pass = "root";
-$host = "127.0.0.1"; // 포트는 따로 지정할 것
-$port = 8889; // MAMP MySQL 포트
-$db = "opentutorials"; // 연결할 DB 없으면 비워도 됨
+// mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // 예외를 명시적으로 쓰겠다
 
-$conn = new mysqli($host, $user, $pass, $db, $port);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+// try {
+//   $conn = new mysqli("127.0.0.1", "root", "root", "opentutorials", 8889);
+//   echo "✅ 연결 성공!";
+// } catch (mysqli_sql_exception $e) {
+//   echo '❌ DB 연결 실패: ' . $e->getMessage();
+// }
 
-mysqli_query($conn, "
+$sql = "
   insert into topic (
     title, description, created
   ) values (
     'MySQL', 'MySQL is ...', now()
   )
-");
+";
+$result = mysqli_query($conn, $sql);
+if ($result === false) {
+  echo mysqli_error($conn);
+}
