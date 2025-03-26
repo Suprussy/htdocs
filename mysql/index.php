@@ -1,3 +1,27 @@
+<?php
+$conn = new mysqli("127.0.0.1", "root", "root", "opentutorials", 8889);
+
+$article = array(
+  'title' => 'Welcome',
+  'description' => 'Hello, web'
+);
+
+$sql = "select * from topic";
+$result = mysqli_query($conn, $sql);
+$list = '';
+
+while ($row = mysqli_fetch_array($result)) {
+  $list = $list . "<li><a href=\"index.php?id={$row['id']}\">{$row['title']}</a></li>"; // 기존 $list에 누적
+}
+if (isset($_GET['id'])) {
+  $sql = "select * from topic where id={$_GET['id']}";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result);
+  $article['title'] = $row['title'];
+  $article['description'] = $row['description'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,13 +32,11 @@
 </head>
 
 <body>
-  <h1>WEB</h1>
-  <ol>
-    <li>HTML</li>
-  </ol>
+  <h1><a href="index.php">WEB</a></h1>
+  <ol><?= $list ?></ol>
   <a href="create.php">create</a>
-  <h2>Welcome</h2>
-  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure libero omnis incidunt sapiente rerum exercitationem in, autem minus reiciendis? Dolorum ex exercitationem vitae qui est beatae rem. Dolores, amet corporis.
+  <h2><?= $article['title'] ?></h2>
+  <?= $article['description'] ?>
 </body>
 
 </html>

@@ -1,3 +1,27 @@
+<?php
+$conn = new mysqli("127.0.0.1", "root", "root", "opentutorials", 8889);
+
+$article = array(
+  'title' => 'Welcome',
+  'description' => 'Hello, web'
+);
+
+$sql = "select * from topic";
+$result = mysqli_query($conn, $sql);
+$list = '';
+
+while ($row = mysqli_fetch_array($result)) {
+  $list = $list . "<li><a href=\"index.php?id={$row['id']}\">{$row['title']}</a></li>"; // 기존 $list에 누적
+}
+if (isset($_GET['id'])) {
+  $sql = "select * from topic where id={$_GET['id']}";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result);
+  $article['title'] = $row['title'];
+  $article['description'] = $row['description'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,10 +32,8 @@
 </head>
 
 <body>
-  <h1>WEB</h1>
-  <ol>
-    <li>HTML</li>
-  </ol>
+  <h1><a href="index.php"></a>WEB</a></h1>
+  <ol><?= $list ?></ol>
   <form action="process_create.php" method="POST">
     <p><input type="text" name="title" placeholder="title"></p>
     <p><textarea name="description" placeholder="description"></textarea></p>
