@@ -15,6 +15,7 @@ $article = array(
 );
 
 $update_link = '';
+$delete_link = '';
 
 if (isset($_GET['id'])) {
   $sql = "select * from topic where id={$_GET['id']}";
@@ -24,6 +25,12 @@ if (isset($_GET['id'])) {
   $article['description'] = $row['description'];
 
   $update_link = '<a href="update.php?id=' . $_GET['id'] . '">update</a>';
+  $delete_link = '
+    <form action="process_delete.php" method="post">
+      <input type="hidden" name="id" value="' . $_GET['id'] . '">
+      <input type="submit" value="delete">
+    </form>
+  ';
 }
 ?>
 
@@ -41,6 +48,7 @@ if (isset($_GET['id'])) {
   <ol><?= $list ?></ol>
   <a href="create.php">create</a>
   <?= $update_link ?>
+  <?= $delete_link ?>
   <h2><?= $article['title'] ?></h2>
   <?= $article['description'] ?>
 </body>
