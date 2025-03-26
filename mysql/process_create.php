@@ -5,7 +5,7 @@ try {
   $conn = new mysqli("127.0.0.1", "root", "root", "opentutorials", 8889);
 
   $sql = "
-    inser into topic (
+    insert into topic (
       title, description, created
     ) values (
       '{$_POST['title']}',
